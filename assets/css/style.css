@@ -4,6 +4,42 @@
     margin: 10% 25%;
 }
 
-ol li {
-    background-color: blue;
+.answers {
+    margin-top: 5px;
+    border-radius: 8px;
+    background-color: rgb(25, 25, 136);
+    color: white;
+    font-weight: lighter;
+}
+.answers li {
+    padding: .5rem;
+}
+ol {
+    list-style: decimal inside;
+
+}
+.answers:hover {
+    background-color: rgb(247, 107, 247);
+}
+.start-header {
+    margin-left: 25%;
+    margin-right: 25%;
+    color: rgb(25, 25, 136);
+    font-weight: bold;
+    border: 5px solid red;
+    text-align: center;
+}
+.start-content {
+    font-weight: bold;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.start-button {
+    margin: 0 45%;
+    font-weight: bold;
+    background-color: rgb(25, 25, 136);
+    color: white;
+}
+.start-button:hover {
+    background-color: rgb(247, 107, 247);
 }
