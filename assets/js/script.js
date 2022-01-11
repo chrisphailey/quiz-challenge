@@ -11,39 +11,73 @@ var answersFive = ["Global Scope", "Local Scope", "Local Storage", "Global Stora
 var answersArray = [answersOne, answersTwo, answersThree, answersFour, answersFive]
 
 var questionsCounter = 0;
+var timerEl = document.getElementById("countdown");
 
 var questionsHandler = function (){
-    document.getElementById("question").style.display = "block";
-    var questionEl = document.getElementById("q");
-    questionEl.textContent = "";
-    questionEl.textContent = questionsArray[questionsCounter];
-    for (var i=0; i < 4; i++){
-        if(i===0){
-            var a1 = document.getElementById("a1");
-            a1.textContent = "";
-            a1.textContent = answersArray[questionsCounter][i];
-        }
-        else if (i===1){
-            var a2 = document.getElementById("a2");
-            a2.textContent = "";
-            a2.textContent = answersArray[questionsCounter][i];
-        }
-        else if (i===2) {
-            var a2 = document.getElementById("a3");
-            a2.textContent = "";
-            a2.textContent = answersArray[questionsCounter][i];
-        }
-        else if (i===3) {
-            var a2 = document.getElementById("a4");
-            a2.textContent = "";
-            a2.textContent = answersArray[questionsCounter][i];
-        }
-    }
+    if(questionsCounter < questionsArray.length) {
+        document.getElementById("question").style.display = "block";
+        var questionEl = document.getElementById("q");
+        questionEl.textContent = "";
+        questionEl.textContent = questionsArray[questionsCounter];
+        for (var i=0; i < 4; i++){
+            if(i===0){
+                var a1 = document.getElementById("a1");
+                a1.textContent = "";
+                a1.textContent = answersArray[questionsCounter][i];
+            }
+            else if (i===1){
+                var a2 = document.getElementById("a2");
+                a2.textContent = "";
+                a2.textContent = answersArray[questionsCounter][i];
+            }
+            else if (i===2) {
+                var a3 = document.getElementById("a3");
+                a3.textContent = "";
+                a3.textContent = answersArray[questionsCounter][i];
+            }
+            else if (i===3) {
+                var a4 = document.getElementById("a4");
+                a4.textContent = "";
+                a4.textContent = answersArray[questionsCounter][i];
+            }
+    } 
     questionsCounter++;
-
+}
+    else {
+        endGame();
+    }
 }
 
-    
+var endGame = function(){
+    // clear question/answer content
+    var questionEl = document.getElementById("q");
+    questionEl.textContent = "";
+    var a1 = document.getElementById("a1");
+    a1.textContent = "";
+    var a2 = document.getElementById("a2");
+    a2.textContent = "";
+    var a3 = document.getElementById("a3");
+    a3.textContent = "";
+    var a4 = document.getElementById("a4");
+    a4.textContent = "";
+    // Reveal end-game content
+    var endGame = document.getElementById("end-game");
+    endGame.style.display = "block";
+}
+function countdown(){
+    // Timer that counts down from 5
+    var timeLeft = 60;
+    // setInterval method to be executed every second
+    var timeInterval = setInterval(function() {
+        if (timeLeft > 0 && questionsCounter < 5) {
+            timerEl.textContent = timeLeft
+            timeLeft--;
+        } else {
+            timerEl.textContent = timeLeft
+            clearInterval(timeInterval);
+        }
+     },1000 );
+}    
 // var questionsHandler = function(){
 //     var questionOne = document.getElementById("q");
 //     questionOne.textContent = "";
@@ -75,7 +109,9 @@ var questionsHandler = function (){
 
 var startQuizHandler = function() {
     document.getElementById("start-body").style.display = "none";
+    document.getElementById("countdown").style.display = "block";
     questionsHandler();
+    countdown();
 }
 
 // Event listener 

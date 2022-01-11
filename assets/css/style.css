@@ -44,3 +44,27 @@
 .start-button:hover {
     background-color: rgb(247, 107, 247);
 }
+#end-game {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+#initials {
+    display: flex;
+}
+#submit-button {
+    font-weight: bold;
+    background-color: rgb(25, 25, 136);
+    color: white;
+}
+#submit-button:hover {
+    background-color: rgb(247, 107, 247);
+}
+.score-container {
+    display: flex;
+}
+#countdown {
+    float: right;
+    margin-right: 10%;
+    font-size: larger;
+    font-weight: bold;
+}

@@ -16,7 +16,7 @@
         </p>
         <button id="start-button">Start Quiz</button>
     </div>
-
+    <div id="countdown" hidden></div>
     <div id="question" hidden>
         <p id="q">
             Which of the you is alive?
@@ -35,6 +35,18 @@
             <li>Yes</li>
             </div>
         </ol>
+    </div>
+    <div id="end-game" hidden>
+        <h1>All Done!</h1>
+        <div class=score-container>
+            <p>Your Score:</p>
+            <div id="score"></div>
+        </div>
+        <div id=initials>
+            <p>Enter Your Initials:</p>
+            <input type="text" placeholder="Your Initials">
+            <button id=submit-button>Submit</button>
+        </div>
     </div>
     <script src="./assets/js/script.js"></script>
 </body>
