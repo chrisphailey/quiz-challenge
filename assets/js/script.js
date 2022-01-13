@@ -13,10 +13,7 @@ var correctAnswers = [".textContent", ".className", ".appendChild", "1. List ite
 var correctDisplay = document.getElementById("correct-display")
 var wrongDisplay = document.getElementById("wrong-display")
 var bodyContainer = document.getElementById("body-container")
-var playerInitials = document.getElementById("player-initials")
-var playerContent
-var highscores = document.getElementById("highscores");
-console.log(highscores);
+var playerInitials = document.getElementById("player-initials").addEventListener("input", playerInfo)
 
 var questionsCounter = 0;
 var timerEl = document.getElementById("countdown");
@@ -71,12 +68,10 @@ var endGame = function(){
 
 
 // Add player initials and score to highscore list
-playerInitials.addEventListener("input", playerInfo)
 function playerInfo(e){
     playerInitials = e.target.value;
 }
 // event listener for eng game submit button
-document.getElementById("submit-button").addEventListener("click", infoUpdate)
 function infoUpdate(){
     var scoreList = document.getElementById("score-list");
     var playerName = document.createElement("li");
@@ -86,6 +81,7 @@ function infoUpdate(){
     scoreList.appendChild(playerName);
     scoreList.appendChild(finalScore)
 }
+document.getElementById("submit-button").addEventListener("click", infoUpdate)
 
 function countdown(){
     // Timer that counts down from 5
