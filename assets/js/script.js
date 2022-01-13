@@ -14,11 +14,10 @@ var correctDisplay = document.getElementById("correct-display")
 var wrongDisplay = document.getElementById("wrong-display")
 var bodyContainer = document.getElementById("body-container")
 var playerInitials = document.getElementById("player-initials").addEventListener("input", playerInfo)
-
+var highscores = localStorage.getItem("highscores")
 var questionsCounter = 0;
 var timerEl = document.getElementById("countdown");
 var timeLeft = 60
-
 var questionsHandler = function (){
     
     if(questionsCounter < questionsArray.length) {
@@ -71,15 +70,12 @@ var endGame = function(){
 function playerInfo(e){
     playerInitials = e.target.value;
 }
-// event listener for eng game submit button
+// event listener for end game submit button
 function infoUpdate(){
-    var scoreList = document.getElementById("score-list");
-    var playerName = document.createElement("li");
-    playerName.textContent = playerInitials;
-    console.log(playerName);
-    console.log(scoreList);
-    scoreList.appendChild(playerName);
-    scoreList.appendChild(finalScore)
+    var playerInitials = document.getElementById("player-initials").value;
+    var finalScore = document.getElementById("score").textContent
+    console.log(playerInitials, finalScore)
+    
 }
 document.getElementById("submit-button").addEventListener("click", infoUpdate)
 
