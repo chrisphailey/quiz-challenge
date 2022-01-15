@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body id="body">
-    <div id=body-container>
+    <div id="body-container">
         <div id="start-body">
-            <a href="./highscores/index.html">View High Scores</a>
             <h1 class="start-header">Coding quiz</h1>
             <p class="start-content">Welcome to the Coding Quiz!  Test your knowledge against your peers by answering curriculum-based questions against the clock.
                 You'll start with 60 seconds and will lose 10 seconds for every incorrect answer.
@@ -51,6 +50,12 @@
             <input id="player-initials" type="text" placeholder="Your Initials">
             <button id=submit-button>Submit</button>
         </div>
+    </div>
+    <div id="highscores-page" hidden>
+        <h1>Highscores</h1>
+        <ul id="score-list"></ul>
+        <button id="go-back">Go Back</button>
+
     </div>
     <script src="./assets/js/script.js"></script>
 </body>

@@ -14,7 +14,7 @@ var correctDisplay = document.getElementById("correct-display")
 var wrongDisplay = document.getElementById("wrong-display")
 var bodyContainer = document.getElementById("body-container")
 var playerInitials = document.getElementById("player-initials").addEventListener("input", playerInfo)
-var highscores = localStorage.getItem("highscores")
+var highscores = JSON.parse(localStorage.getItem("highscores")) 
 var questionsCounter = 0;
 var timerEl = document.getElementById("countdown");
 var timeLeft = 60
@@ -72,12 +72,50 @@ function playerInfo(e){
 }
 // event listener for end game submit button
 function infoUpdate(){
+    var highscores = JSON.parse(localStorage.getItem("highscores")) 
     var playerInitials = document.getElementById("player-initials").value;
     var finalScore = document.getElementById("score").textContent
-    console.log(playerInitials, finalScore)
-    
+    if(!highscores){
+        var obj = {};
+        obj[playerInitials] = finalScore;
+        let scoresArray = [];
+        scoresArray.push(obj);
+        localStorage.setItem("highscores", JSON.stringify(scoresArray))
+    } else {
+        console.log(highscores);
+        var obj = {};
+        obj[playerInitials] = finalScore;
+        highscores.push(obj);
+        localStorage.setItem("highscores", JSON.stringify(highscores)); 
+    }
+    var highscores = JSON.parse(localStorage.getItem("highscores"));
+    for(var i=0; i < highscores.length; i++){
+        for(const property in highscores[i]){
+            var scoreItem = document.createElement("li");
+            scoreItem.textContent = `${property} : ${highscores[i][property]}`
+            var scoreList = document.getElementById("score-list");
+            scoreList.appendChild(scoreItem);
+        }
+    }
+    highscoreHandler();
 }
+function highscoreHandler(){
+    var endGame = document.getElementById("end-game");
+    endGame.style.display = "none";
+    var bodyContainer = document.getElementById("body-container");
+    if(bodyContainer){
+        bodyContainer.style.display = "none";
+    }
+    var highscoresPage = document.getElementById("highscores-page");
+    highscoresPage.style.display = "block";    
+}
+// go back button returns user to start page
+function returnHandler(){
+    location.reload();
+    }
+
 document.getElementById("submit-button").addEventListener("click", infoUpdate)
+document.getElementById("go-back").addEventListener("click", returnHandler)
 
 function countdown(){
     // Timer that counts down from 5
